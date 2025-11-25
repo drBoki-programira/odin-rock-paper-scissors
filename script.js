@@ -1,17 +1,11 @@
-console.log("Welcome to console Rock, Paper, Scissors")
+function playGame(event) {
+    function getComputerChoice() {
+        let rng = Math.random()
+        if (rng < 0.33) return "rock"
+        else if (rng >= 0.66) return "paper"
+        else return "scissors"
+    }
 
-function getComputerChoice() {
-    let rng = Math.random()
-    if (rng < 0.33) return "rock"
-    else if (rng >= 0.66) return "paper"
-    else return "scissors"
-}
-
-function getHumanChoice() {
-    return prompt("Choose what you want to play - rock, paper, scissors").toLowerCase()
-}
-
-function playGame() {
     function playRound(humanChoice, computerChoice) {
         let message = ''
         if (humanChoice === "rock" && computerChoice === "scissors") {
@@ -39,20 +33,37 @@ function playGame() {
             message = "You lose! Scissors beat Paper"
         }
         else message = "It's a draw!"
-        console.log(message)
+        msg.textContent = message
     }
 
-    let humanScore = 0
-    let computerScore = 0
-
-    for (let i = 0; i < 5; i++) {
-        let humanSelection = getHumanChoice()
-        let computerSelection = getComputerChoice()
+    let humanSelection = event.target.textContent
+    let computerSelection = getComputerChoice()
         
-        playRound(humanSelection, computerSelection)
+    playRound(humanSelection, computerSelection)
+
+    player.textContent = humanScore
+    computer.textContent = computerScore
+
+    if (humanScore === 5 || computerScore === 5) {
+        const winner = humanScore === 5 ? "YOU WIN!" : "YOU LOSE!"
+        const final = document.createElement("div")
+        final.textContent = `GAME OVER! ${winner}`
+        page.appendChild(final)
+        buttons.forEach((button) => button.disabled = true)
     }
-
-    console.log(`Final score: YOU ${humanScore} - COMPUTER ${computerScore}`)
 }
+let humanScore = 0
+let computerScore = 0
 
-playGame()
+const page = document.querySelector("body")
+
+const msg = document.querySelector(".messages")
+msg.textContent = "Welcome to Rock, Paper, Scissors"
+
+const player = document.querySelector(".player")
+const computer = document.querySelector(".computer")
+
+const buttons = document.querySelectorAll(".selection button")
+buttons.forEach((button) => {
+    button.addEventListener("click", playGame)
+})
