@@ -45,8 +45,9 @@ function playGame(event) {
     computer.textContent = computerScore
 
     if (humanScore === 5 || computerScore === 5) {
-        const winner = humanScore === 5 ? "YOU WIN!" : "YOU LOSE!"
+        const winner = humanScore === 5 ? "YOU WON!" : "YOU LOST!"
         const final = document.createElement("div")
+        final.setAttribute("class", "final")
         final.textContent = `GAME OVER! ${winner}`
         page.appendChild(final)
         buttons.forEach((button) => button.disabled = true)

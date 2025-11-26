@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Barrio&display=swap');
+
+body {
+    font-family: Barrio, system-ui;
+    font-size: 20px;
+    color: #E0d9d9;
+    background-color: #2F5755;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.messages {
+    font-size: 50px;
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+.selection {
+    padding: 5px;
+}
+
+button {
+    font-family: Barrio, system-ui;
+    font-size: 40px;
+    color: #E0d9d9;
+    background-color: #5A9690;
+    border-radius: 10px;
+}
+
+.scoreboard {
+    display: flex;
+    gap: 10px;
+    font-size: 50px;
+    padding: 20px;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.final {
+    font-size: 70px;
+}
